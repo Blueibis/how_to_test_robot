@@ -10,6 +10,7 @@ class TestRobot < MiniTest::Test
     robot = Robot.new
     robot.needs_repairs = true
     robot.foreign_model = true
+    robot.vintage_model = false
     # act
     result = robot.station
     # assert
@@ -20,6 +21,7 @@ class TestRobot < MiniTest::Test
     robot = Robot.new
     robot.vintage_model = true
     robot.needs_repairs = true
+    robot.foreign_model = false
     # arrange
     result = robot.station
     # act
@@ -28,11 +30,14 @@ class TestRobot < MiniTest::Test
   end
 
   def test_that_standard_robot_needing_repairs_sent_to_station_3
-    skip
+    robot = Robot.new
+    robot.needs_repairs = true
+    robot.vintage_model = false
+    robot.foreign_model = false
     # arrange
-
+    result = robot.station
     # act
-
+    assert_equal(3, result)
     # assert
   end
 
