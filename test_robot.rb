@@ -17,11 +17,13 @@ class TestRobot < MiniTest::Test
   end
 
   def test_that_vintage_robot_needing_repairs_sent_to_station_2
-    skip
+    robot = Robot.new
+    robot.vintage_model = true
+    robot.needs_repairs = true
     # arrange
-
+    result = robot.station
     # act
-
+    assert_equal(2, result)
     # assert
   end
 
