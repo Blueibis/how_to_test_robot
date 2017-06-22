@@ -42,11 +42,14 @@ class TestRobot < MiniTest::Test
   end
 
   def test_that_robot_in_good_condition_sent_to_station_4
-    skip
+    robot = Robot.new
+    robot.vintage_model = false
+    robot.foreign_model = false
+    robot.needs_repairs = false
     # arrange
-
+    result = robot.station
     # act
-
+    assert_equal(4, result)
     # assert
   end
 
