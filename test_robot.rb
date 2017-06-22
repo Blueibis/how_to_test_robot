@@ -18,27 +18,27 @@ class TestRobot < MiniTest::Test
   end
 
   def test_that_vintage_robot_needing_repairs_sent_to_station_2
+    # arrange
     robot = Robot.new
     robot.vintage_model = true
     robot.needs_repairs = true
     robot.foreign_model = false
-    # arrange
-    result = robot.station
     # act
-    assert_equal(2, result)
+    result = robot.station
     # assert
+    assert_equal(2, result)
   end
 
   def test_that_standard_robot_needing_repairs_sent_to_station_3
+    # arrange
     robot = Robot.new
     robot.needs_repairs = true
     robot.vintage_model = false
     robot.foreign_model = false
-    # arrange
-    result = robot.station
     # act
-    assert_equal(3, result)
+    result = robot.station
     # assert
+    assert_equal(3, result)
   end
 
   def test_that_robot_in_good_condition_sent_to_station_4
@@ -54,12 +54,12 @@ class TestRobot < MiniTest::Test
   end
 
   def test_prioritize_tasks_with_empty_todo_list_returns_negative_one
-    skip
     # arrange
-
+    robot = Robot.new
     # act
-
+    result = robot.prioritize_tasks
     # assert
+    assert_equal(-1, result)
   end
 
   def test_prioritize_tasks_with_todos_returns_max_todo_value
