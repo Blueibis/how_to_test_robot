@@ -63,12 +63,14 @@ class TestRobot < MiniTest::Test
   end
 
   def test_prioritize_tasks_with_todos_returns_max_todo_value
-    skip
     # arrange
-
+    robot = Robot.new
+    robot.todos << 5
+    robot.todos << 123
     # act
-
+    result = robot.prioritize_tasks
     # assert
+    assert_equal(123, result)
   end
 
   def test_workday_on_day_off_returns_true
